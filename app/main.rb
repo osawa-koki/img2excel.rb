@@ -42,10 +42,7 @@ Axlsx::Package.new do |p|
         # puts "x:#{x}, y:#{y}, color:#{red},#{green},#{blue}"
         # puts "color_code:#{color_code}"
 
-        bg = p.workbook.styles.add_style :bg_color => color_code
-
-        sheet.rows[y].cells[x].style = sheet.workbook.styles.add_style(:bg_color => 'FF0000')
-
+        sheet.rows[y].cells[x].style = sheet.workbook.styles.add_style(:bg_color => color_code)
       end
     end
 
