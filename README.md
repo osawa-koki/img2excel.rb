@@ -14,3 +14,9 @@ ruby ./app/main.rb -i tako.png -o tako.xlsx
 ruby ./app/main.rb -i tuna.png -o tuna.xlsx
 ruby ./app/main.rb -i shell.png -o shell.xlsx
 ```
+
+## 使用している技術
+
+- Ruby
+  - axlsx (Excel操作)
+  - RMagick (画像操作)
