@@ -16,7 +16,21 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "cat /etc/os-release"
+	"postCreateCommand": "cat /etc/os-release",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rebornix.Ruby",
+				"EditorConfig.EditorConfig",
+				"mhutchie.git-graph",
+				"GitHub.copilot",
+				"yzhang.markdown-all-in-one",
+				"DavidAnson.vscode-markdownlint",
+				"Shopify.ruby-extensions-pack",
+				"Shopify.ruby-lsp"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
