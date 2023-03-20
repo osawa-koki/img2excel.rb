@@ -8,5 +8,5 @@ Axlsx::Package.new do |p|
       chart.add_series :data => sheet["B2:B4"], :labels => sheet["A2:A4"],  :colors => ['FF0000', '00FF00', '0000FF']
     end
   end
-  p.serialize('simple.xlsx')
+  p.serialize('sample.xlsx')
 end
