@@ -44,6 +44,14 @@ height = image.rows
 
 puts "width:#{width}, height:#{height}"
 
+size = width * height
+puts "size:#{size}"
+
+if size > 128 * 128
+  puts "Too large image size: #{size}"
+  exit
+end
+
 # セルの大きさを設定する
 cell_width = options[:cell_width].to_f
 cell_height = options[:cell_height].to_f
