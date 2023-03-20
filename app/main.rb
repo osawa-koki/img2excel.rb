@@ -1,8 +1,39 @@
 require 'rmagick'
 require 'axlsx'
+require 'optparse'
+
+options = {}
+options[:cell_width] = 0.7
+options[:cell_height] = 5
+opt_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: example.rb [options]"
+
+  opts.on("-i", "--input INPUT_PATH", "Input file path") do |v|
+    options[:input_path] = v
+  end
+
+  opts.on("-o", "--output OUTPUT_PATH", "Output file path") do |v|
+    options[:output_path] = v
+  end
+
+  opts.on("-w", "--width [CELL_WIDTH]", Float, "Cell width (default: 0.7)") do |v|
+    options[:cell_width] = v
+  end
+
+  opts.on("-h", "--height [CELL_HEIGHT]", Float, "Cell height (default: 5)") do |v|
+    options[:cell_height] = v
+  end
+end
+
+opt_parser.parse!(ARGV)
+
+if options[:input_path].nil? || options[:output_path].nil?
+  puts "Missing required arguments: -i/--input, -o/--output"
+  exit
+end
 
 # 画像ファイルのパスを指定する
-image_path = 'tako.png'
+image_path = options[:input_path]
 
 # 画像ファイルを読み込む
 image = Magick::Image.read(image_path).first
@@ -14,8 +45,10 @@ height = image.rows
 puts "width:#{width}, height:#{height}"
 
 # セルの大きさを設定する
-cell_width = 0.7
-cell_height = 5
+cell_width = options[:cell_width].to_f
+cell_height = options[:cell_height].to_f
+
+puts "cell_width:#{cell_width}, cell_height:#{cell_height}"
 
 Axlsx::Package.new do |p|
   p.workbook.add_worksheet(:name => "main") do |sheet|
@@ -48,5 +81,7 @@ Axlsx::Package.new do |p|
 
   end
 
-  p.serialize('sample.xlsx')
+  p.serialize(options[:output_path])
 end
+
+puts "Done!"
