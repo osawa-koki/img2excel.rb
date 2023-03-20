@@ -25,6 +25,5 @@ Axlsx::Package.new do |p|
     sheet["B2"].style = green_bg
     sheet["C2"].style = blue_bg
   end
-
   p.serialize('sample.xlsx')
 end
