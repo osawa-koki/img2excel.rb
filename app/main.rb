@@ -1,29 +1,12 @@
-require 'rmagick'
 require 'axlsx'
-
-# 画像ファイルのパスを指定する
-image_path = 'tako.png'
-
-# 画像ファイルを読み込む
-image = Magick::Image.read(image_path).first
 
 Axlsx::Package.new do |p|
   p.workbook.add_worksheet(:name => "main") do |sheet|
-
-    # 画像の幅と高さを取得する
-    width = image.columns
-    height = image.rows
-
-    # ピクセルを縦横ループして1ピクセルずつ色を取得する
-    (0..height-1).each do |y|
-      (0..width-1).each do |x|
-        pixel = image.pixel_color(x, y)
-        red = pixel.red
-        green = pixel.green
-        blue = pixel.blue
-        puts "x:#{x}, y:#{y}, color:#{red},#{green},#{blue}"
-      end
-    end
+    # セルの値を設定
+    width = 10
+    sheet.add_row Array.new(width, nil)
+    sheet.add_row Array.new(width, nil)
+    sheet.add_row Array.new(width, nil)
 
     # 行の高さを設定
     sheet.rows[0].height = 30
@@ -43,5 +26,6 @@ Axlsx::Package.new do |p|
     sheet["B2"].style = green_bg
     sheet["C2"].style = blue_bg
   end
+
   p.serialize('sample.xlsx')
 end
