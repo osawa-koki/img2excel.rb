@@ -2,10 +2,6 @@ require 'axlsx'
 
 Axlsx::Package.new do |p|
   p.workbook.add_worksheet(:name => "main") do |sheet|
-    # セルの値を設定
-    sheet.add_row ["Sample Spreadsheet"]
-    sheet.add_row ["First", "Second", "Third"]
-    sheet.add_row [1, 2, 3]
 
     # 行の高さを設定
     sheet.rows[0].height = 30
