@@ -27,7 +27,8 @@
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
 				"Shopify.ruby-extensions-pack",
-				"Shopify.ruby-lsp"
+				"Shopify.ruby-lsp",
+				"GrapeCity.gc-excelviewer"
 			]
 		}
 	}
